@@ -14,6 +14,13 @@ namespace CollectionsTests
             Assert.Equal(1, deck.Count());
         }
 
-        
+        [Fact]
+        public void CanGetAndSetCardValue()
+        {
+            Deck<Card> deck = new Deck<Card>();
+            Card card = new Card("Ace of ", Card.Suits.Spades);
+            deck.Add(card);
+            Assert.Equal("Ace of Spades", $"{card.Value}{Card.Suits.Spades}");
+        }
     }
 }
