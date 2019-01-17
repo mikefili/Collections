@@ -46,7 +46,7 @@ namespace Collections
             }
         }
 
-        public int Count(T item)
+        public int Count()
         {
             return currentIndex;
         }

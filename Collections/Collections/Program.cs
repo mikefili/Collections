@@ -43,7 +43,7 @@ namespace Collections
             return deck;
         }
 
-        static void DealHandler(Deck<Card> deck)
+        public static void DealHandler(Deck<Card> deck)
         {
             foreach (Card card in deck)
             {
