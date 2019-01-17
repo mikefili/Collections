@@ -22,5 +22,16 @@ namespace CollectionsTests
             deck.Add(card);
             Assert.Equal("Ace of Spades", $"{card.Value}{Card.Suits.Spades}");
         }
+
+        [Fact]
+        public void CanGetAndSetCardSuit()
+        {
+            Deck<Card> deck = new Deck<Card>();
+            Card card = new Card("Ace of ", Card.Suits.Spades);
+            deck.Add(card);
+            Assert.Equal(Card.Suits.Spades, card.Suit);
+        }
+
+
     }
 }
