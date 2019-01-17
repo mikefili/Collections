@@ -22,7 +22,28 @@ namespace Collections
 
         public void Remove(T item)
         {
-            cardsInDeck[currentIndex] = item;
+            bool dealt = false;
+            int j = 0;
+
+            for (int i = 0; i < cardsInDeck.Length - 1; i++)
+            {
+                if (item.Equals(cardsInDeck[i]))
+                {
+                    dealt = true;
+                    j++;
+                }
+                cardsInDeck[i] = cardsInDeck[j];
+                j++;
+                if (j == cardsInDeck.Length)
+                {
+                    i = cardsInDeck.Length - 1;
+                }
+            }
+            if (dealt)
+            {
+                Array.Resize(ref cardsInDeck, cardsInDeck.Length - 1);
+                currentIndex--;
+            }
         }
 
         public int Count(T item)
