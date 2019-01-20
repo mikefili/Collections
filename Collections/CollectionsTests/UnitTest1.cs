@@ -4,8 +4,8 @@ using Collections;
 
 // X Add a card to your deck
 // X Getter/Setters of your properties from your Card class
-//  Remove a card from your deck that exists
-//  Cannot remove a card from your deck that does not exist
+// X Remove a card from your deck that exists
+// X Cannot remove a card from your deck that does not exist
 
 namespace CollectionsTests
 {
@@ -47,6 +47,18 @@ namespace CollectionsTests
             deck.Add(cardTwo);
             deck.Remove(cardTwo);
             Assert.Equal(1, deck.Count());
+        }
+
+        [Fact]
+        public void CannotRemoveCardNotInDeck()
+        {
+            Deck<Card> deck = new Deck<Card>();
+            Card cardOne = new Card("Ace of ", Card.Suits.Spades);
+            Card cardTwo = new Card("Queen of ", Card.Suits.Hearts);
+            Card cardThree = new Card("Jack of", Card.Suits.Diamonds);
+            deck.Add(cardOne);
+            deck.Add(cardTwo);
+            Assert.Throws<IndexOutOfRangeException>(() => deck.Remove(cardThree));
         }
     }
 }
