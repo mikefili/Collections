@@ -2,6 +2,11 @@ using System;
 using Xunit;
 using Collections;
 
+// X Add a card to your deck
+// X Getter/Setters of your properties from your Card class
+//  Remove a card from your deck that exists
+//  Cannot remove a card from your deck that does not exist
+
 namespace CollectionsTests
 {
     public class UnitTest1
@@ -32,6 +37,16 @@ namespace CollectionsTests
             Assert.Equal(Card.Suits.Spades, card.Suit);
         }
 
-
+        [Fact]
+        public void CanRemoveCardInDeck()
+        {
+            Deck<Card> deck = new Deck<Card>();
+            Card cardOne = new Card("Ace of ", Card.Suits.Spades);
+            Card cardTwo = new Card("Queen of ", Card.Suits.Hearts);
+            deck.Add(cardOne);
+            deck.Add(cardTwo);
+            deck.Remove(cardTwo);
+            Assert.Equal(1, deck.Count());
+        }
     }
 }
