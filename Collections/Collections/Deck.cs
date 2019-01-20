@@ -22,31 +22,51 @@ namespace Collections
 
         public void Remove(T item)
         {
-            bool dealt = false;
-            int j = 0;
+            T[] temp = new T[(cardsInDeck.Length - 1)];
+            int tempcount = 0;
 
-            for (int i = 0; i < cardsInDeck.Length - 1; i++)
+            foreach (T card in cardsInDeck)
             {
-                if (item.Equals(cardsInDeck[i]))
+                if (card != null)
                 {
-                    dealt = true;
-                    j++;
-                }
-                cardsInDeck[i] = cardsInDeck[j];
-                j++;
-                if (j == cardsInDeck.Length)
-                {
-                    i = cardsInDeck.Length - 1;
+                    if (!card.Equals(item))
+                    {
+                        temp[tempcount] = card;
+                        tempcount++;
+                    }
                 }
             }
-            if (dealt)
-            {
-                Array.Resize(ref cardsInDeck, cardsInDeck.Length - 1);
-                currentIndex--;
-            }
+            cardsInDeck = temp;
+            currentIndex--;
         }
 
-        public int Count(T item)
+        //public void Remove(T item)
+        //{
+        //    bool dealt = false;
+        //    int j = 0;
+
+        //    for (int i = 0; i < cardsInDeck.Length - 1; i++)
+        //    {
+        //        if (item.Equals(cardsInDeck[i]))
+        //        {
+        //            dealt = true;
+        //            j++;
+        //        }
+        //        cardsInDeck[i] = cardsInDeck[j];
+        //        j++;
+        //        if (j == cardsInDeck.Length)
+        //        {
+        //            i = cardsInDeck.Length - 1;
+        //        }
+        //    }
+        //    if (dealt)
+        //    {
+        //        Array.Resize(ref cardsInDeck, cardsInDeck.Length - 1);
+        //        currentIndex--;
+        //    }
+        //}
+
+        public int Count()
         {
             return currentIndex;
         }
